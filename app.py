@@ -29,7 +29,7 @@ db = SQLAlchemy(server)
 app.layout = html.Div([
         dcc.Interval(id='interval_pg', interval=1000, n_intervals=0),
         html.Div(id='postgres_datatable'),
-        html.h5('APPtitle')
+        html.H5('APPtitle')
     ])
 
 # One callback just to pull the table from postgres and output in datatable format
