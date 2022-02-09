@@ -27,8 +27,6 @@ db = SQLAlchemy(server)
 
 # Simple layout just displaying the postgres table we have in the server
 app.layout = html.Div([
-        html.H5('This is a title')
-        html.H3('This is a subtitle')
         dcc.Interval(id='interval_pg', interval=1000, n_intervals=0),
         html.Div(id='postgres_datatable'),
         html.H5('APPtitle')
