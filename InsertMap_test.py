@@ -19,7 +19,7 @@ from dash.dependencies import Input, Output
 import plotly.offline as py
 import plotly.graph_objs as go
 
-df = pd.read_csv('MainFrame_test.csv')
+df = pd.read_csv('MainFrame_testMap.csv')
 
 app = dash.Dash(__name__)
 
