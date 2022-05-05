@@ -11,8 +11,8 @@ from flask import Flask
 
 # app requires "pip install psycopg2" as well
 
-app = dash.Dash(__name__)
-application = app.server
+application = dash.Dash(__name__)
+application = application.server
 
 # Config the local postgresql database
 #app.server.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:M1h1rm@ll@localhost/test"
@@ -26,7 +26,7 @@ application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(application)
 
 # Simple layout just displaying the postgres table we have in the server
-app.layout = html.Div([
+application.layout = html.Div([
         html.H5('Adding title'),
         html.H3('subtitle'),
         dcc.Interval(id='interval_pg', interval=1000, n_intervals=0),
@@ -35,7 +35,7 @@ app.layout = html.Div([
     ])
 
 # One callback just to pull the table from postgres and output in datatable format
-@app.callback(Output('postgres_datatable', 'children'),
+@application.callback(Output('postgres_datatable', 'children'),
               [Input('interval_pg', 'n_intervals')])
 def populate_datatable(n_intervals):
     df = pd.read_sql_table('savepandas_mainframe', con=db.engine)
@@ -47,4 +47,4 @@ def populate_datatable(n_intervals):
                                 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    application.run_server(debug=False)
